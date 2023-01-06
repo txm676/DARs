@@ -6,4 +6,4 @@ Matthews, T.J. et al. (2023) A global analysis of avian island diversity–area 
 
 See the meta-data file for detailed information on the files contained in the repository.
 
-Authors: Tom Matthews and Francois Rigal (Figure 5 code)
+Code authors: Tom Matthews and Francois Rigal (Figure 5 code)
