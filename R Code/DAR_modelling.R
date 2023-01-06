@@ -18,7 +18,9 @@ library(sars) #needs to >= version 1.3.5
 library(foreach)
 library(doParallel)
 library(cluster)
-library(ggplot2)
+library(ggplot2) #needs to be a recent version
+#note that we noticed on some machines it was necessary to install
+#a recent version of the 'vctrs' package.
 
 ##source my necessary functions
 source("R Code\\DAR_SOURCE.R")
@@ -40,6 +42,14 @@ source("R Code\\DAR_DATA_SOURCE.R")
 #This fits the 20 DAR models, runs the null models, and
 #fits the ES-area relationship models
 
+#Set linPow to TRUE to return the linear power z-values
+
+#use norma = "shapiro", homoT = "cor.fitted", to add in residual
+#assumptions
+
+#check_trees runs various checks but is not essential so can be set
+#to FALSE
+
 ##Note this takes many hours to run
 
 #set up parallel back-end
@@ -56,9 +66,9 @@ rez = foreach(i=seq(from=1, to=length(ldf_all), by=1))  %dopar% {
   library(dplyr)
 
   Fits <- fit_DARs(ldf_all[[i]], phy_dend = a3, phy = cons_tree, n = 0,
-                   grid_start = "none",
+                   grid_start = "exhaustive",
                    grid_n = 25000,
-                   null_model = "taxa.tabels", null_n = 9,
+                   null_model = "taxa.tabels", null_n = 999,
                    power_only = FALSE,
                    linPow = FALSE,
                    check_trees = FALSE)
@@ -75,9 +85,9 @@ rez_alien = foreach(i=seq(from=1, to=length(ldf_alien), by=1))  %dopar% {
   library(dplyr)
 
   Fits <- fit_DARs(ldf_alien[[i]], phy_dend = a3, phy = cons_tree, n = 0,
-                   grid_start = "none",
+                   grid_start = "exhaustive",
                    grid_n = 25000,
-                   null_model = "taxa.tabels", null_n = 9,
+                   null_model = "taxa.tabels", null_n = 999,
                    power_only = FALSE,
                    linPow = FALSE,
                    check_trees = FALSE)
@@ -93,9 +103,9 @@ rez_extinct = foreach(i=seq(from=1, to=length(ldf_Ex), by=1))  %dopar% {
   library(picante)
   library(dplyr)
   Fits <- fit_DARs(ldf_Ex[[i]], phy_dend = a3, phy = cons_tree, n = 0,
-                   grid_start = "none",
+                   grid_start = "exhaustive",
                    grid_n = 25000,
-                   null_model = "taxa.tabels", null_n = 9,
+                   null_model = "taxa.tabels", null_n = 999,
                    power_only = FALSE,
                    linPow = FALSE,
                    check_trees = FALSE)

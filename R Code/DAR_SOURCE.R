@@ -10,12 +10,20 @@ fit_DARs <- function(dat,
                      null_model = "taxa.tabels", 
                      null_n = 99,
                      norma = "none", homoT = "none",
-                     confInt = FALSE, ciN = 50, grid_start = "none", grid_n = NULL,
+                     confInt = FALSE, ciN = 50, grid_start = "none", 
+                     grid_n = NULL,
                      power_only = FALSE, 
                      linPow = FALSE, check_trees = FALSE){
-  #phy = phylogeny, n is min number of species an island can have
+  #phy = phylogeny, phy_dend = dendrogram
+  #n is min number of species an island can have
   #null_model is the name of null model from ses.pd function
   #null_n = no. of null iterations
+  #norma = sars R package residual normality test
+  #homoT = sars R package residual homogeneity test
+  #confInt = calculate confidence intervals around MMI SAR curve
+  #ciN = number of fits to generate the CIs
+  #grid_start and grid_n = whether to use grid_start in the SAR model
+  #fitting (see help docs of sar_average in sars R package)
   #power_only - only fit the simple 2 par models
   #linPow = also fit the linear power model and return z for ISAR, IPDAR and IFDAR
   #check_trees = check global dendrogram PD and (S)ES values against pruned versions
