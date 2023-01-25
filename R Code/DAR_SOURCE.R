@@ -81,7 +81,8 @@ fit_DARs <- function(dat,
   }
 
   #Check ES_p-values are similar to SES p-values
-  check_vals[1,2] <- any(round(nmF$pd.obs.p, 2) - round(nmF$ES_P, 2) > 0.015)
+  check_vals[1,2] <- any(abs(round(nmF$pd.obs.p, 2) - 
+                               round(nmF$ES_P, 2)) > 0.015)
   
   #as we include 1 species islands, the SES z value returns
   #a NaN for these; so change to zero to allow the correlations
@@ -469,7 +470,8 @@ func_mpd <- function(d, dend, null.FD, null_n,
     }
     
     #Check ES_p-values are similar to SES p-values
-    check_vals_fd[1,2] <- any(round(nmF_fd$pd.obs.p, 2) - round(nmF_fd$ES_P, 2) > 0.015)
+    check_vals_fd[1,2] <- any(abs(round(nmF_fd$pd.obs.p, 2) - 
+                                    round(nmF_fd$ES_P, 2)) > 0.015)
     
     #as we include 1 species islands, the SES z value returns
     #a NaN for these; so change to zero to allow the correlations
@@ -506,8 +508,8 @@ ES_null <- function(comm){
   for (j in 1:nrow(comm[[1]])){
     #uses same code as in IUCN script
     dis <- comm[[2]][,j]
-    if (mean(dis) != comm[[1]][j,3]) stop("lonely data")
-    obs <- comm[[1]][j,2]
+    if (mean(dis) != comm[[1]][j,"pd.rand.mean"]) stop("lonely data")
+    obs <- comm[[1]][j,"pd.obs"]
     dis <- c(dis, obs)# don't forget to add the obs into the null values
     res <- (sum(dis < obs) + sum(dis == obs)/2) / length(dis)
     ES_IS[j,1] <- res
