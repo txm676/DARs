@@ -1,0 +1,52 @@
+Dataset,Elev_max,Bio1_m,Bio12_m,Type_coarse,Type_V_fine,Type_fine,Type_fine2,Iso,MeanDist
+battisti et al (2009) Anzio.csv,67,16.10659729,835.8888889,Habitat,Habitat,Habitat,Habitat,NA,NA
+battisti et al (2009) cornicolan hills_noAliens.csv,1207,11.18221726,660.7678571,Habitat,Habitat,Habitat,Habitat,NA,NA
+Berg_1997_birds.csv,56,5.830691972,571.0446429,Habitat,Habitat,Habitat,Habitat,NA,NA
+Blake (1991) birds Illinois_noAliens.csv,205,9.964992557,916.7053571,Habitat,Habitat,Habitat,Habitat,NA,NA
+CSV-brotons and herrando 2001 ECJ..csv.csv,330,14.93692659,617.412844,Habitat,Habitat,Habitat,Habitat,NA,NA
+CSV-Cieslak & Dombrowski 1993 ECJ..csv.csv,170,8.17201834,529.9908257,Habitat,Habitat,Habitat,Habitat,NA,NA
+"CSV-dos Anjos and Bocon, 1999 ECJ..csv",1138,16.47843569,1613,Habitat,Habitat,Habitat,Habitat,NA,NA
+CSV-Fernandez Juiricic 2000 ECJ_noAliens.csv,723,14.53826755,412.3859649,Habitat,Habitat,Habitat,Habitat,NA,NA
+CSV-Ford 1987 ECJ_noAliens.csv,121,9.913405833,646.0782609,Habitat,Habitat,Habitat,Habitat,NA,NA
+"CSV-Gillespie & Walter, 2001 ECJ..csv.csv",91,26.68618623,1547.900901,Habitat,Habitat,Habitat,Habitat,NA,NA
+CSV-Langrand (1995) ISAR_justFRAGMENTS.csv,1599,17.90587805,1452.401786,Habitat,Habitat,Habitat,Habitat,NA,NA
+CSV-McCollin 1993 ECJ_noAliens.csv,67,9.240895104,623.3333333,Habitat,Habitat,Habitat,Habitat,NA,NA
+CSV-Simberloff & Martin 1991 ECJ..csv.csv,190,3.204475244,670.4074074,Habitat,Habitat,Habitat,Habitat,NA,NA
+"CSV-Watson, 2003 ECJ..csv.csv",1949,21.32633923,647.4553571,Habitat,Habitat,Habitat,Habitat,NA,NA
+Daily et al (2001) birds.csv,1432,20.95950299,2990.675439,Habitat,Habitat,Habitat,Habitat,NA,NA
+Dami_2012_birds.csv,1637,22.42672675,2115.612613,Habitat,Habitat,Habitat,Habitat,NA,NA
+dos Anjos (2004) human-fragments.csv,655,20.17931815,1549.1,Habitat,Habitat,Habitat,Habitat,NA,NA
+Edwards_2010_birds.csv,568,25.34869795,2193.776786,Habitat,Habitat,Habitat,Habitat,NA,NA
+Martensen_2012_Cau.csv,999,17.03505115,1544.140351,Habitat,Habitat,Habitat,Habitat,NA,NA
+Martensen_2012_RG.csv,796,18.62269729,1278.298246,Habitat,Habitat,Habitat,Habitat,NA,NA
+Martensen_2012_TAP.csv,968,17.26928023,1857.290909,Habitat,Habitat,Habitat,Habitat,NA,NA
+Ulrich_2016_birds.csv,1871,19.0833705,1092.526786,Habitat,Habitat,Habitat,Habitat,NA,NA
+wang et al (2013) birds (resident and breeding).csv,62,16.81301162,1324.675439,Habitat,Habitat,Habitat,Habitat,NA,NA
+Wethered & Lawes 2005 Balgowan ECJ.csv,1529,15.31659163,865.8648649,Habitat,Habitat,Habitat,Habitat,NA,NA
+Wethered & Lawes 2005 Gilgoa ECJ.csv,1531,15.46425841,886.6422018,Habitat,Habitat,Habitat,Habitat,NA,NA
+Azeria(2004)_noAliens.csv,20,22.70163041,259.0869565,Water,C.Shelf / Atoll,Other_true,Marine,1.462493026,4.140285611
+Baiser et al (2017) Cape Verde Birds_current_noAliens.csv,2504,22.16219249,218.6738897,Water,Oceanic,Oceanic,Marine,586.8036096,18.22563714
+Baiser et al (2017) Cook Islands Birds_current_noAliens.csv,404,24.17880521,1991.244898,Water,Oceanic,Oceanic,Marine,4540.86083,131.225663
+Baiser et al (2017) Galapagos Birds_current.csv,1635,23.13276238,313.5347007,Water,Oceanic,Oceanic,Marine,948.570696,25.18369007
+Baiser et al (2017) Hawaii Birds_current_noAliens.csv,4121,18.70139636,1712.608166,Water,Oceanic,Oceanic,Marine,3649.445728,40.74969505
+Baiser et al (2017) Lesser Antilles Birds_current_noAliens.csv,1330,25.62888115,1754.574274,Water,Oceanic,Oceanic,Marine,152.3594385,50.79687296
+Baiser et al (2017) Marianas Birds_current_noAliens.csv,779,26.69943712,2142.195412,Water,Oceanic,Oceanic,Marine,1812.856171,38.17461886
+Baiser et al (2017) Society Islands Birds_current_noAliens.csv,1511,22.84477088,1939.752577,Water,Oceanic,Oceanic,Marine,5442.244025,52.5931794
+Bengtson&Bloch(1983)BirdsBreeding.csv,882,6.208712349,2774.396232,Water,Oceanic,Oceanic,Marine,323.3235076,1.134375351
+Borgesetal_azores birds_noAliens.csv,2066,16.58496477,1218.270845,Water,Oceanic,Oceanic,Marine,1385.273957,33.06463914
+Borgesetal_canary birds_noAliens.csv,3470,17.91619304,263.3517399,Water,Oceanic,Oceanic,Marine,116.1823992,36.13901826
+Bradstreet&McCracken(1978)_noAliens.csv,102,6.997478071,959.2368421,Water,Inland,Other_true,Inland,1.733026075,1.563272221
+Haila et al 1983_birds.csv,13,5.717314794,548.3555556,Water,C.Shelf,Other_true,Marine,69.0436753,0.440399849
+Kubota et al. Birds Ryukus_noAliens.csv,1788,20.89967659,2451.69566,Water,C.Shelf,Other_true,Marine,329.5814439,12.01906047
+Martin (2022) NZ_current_noAliens.csv,3332,10.18213174,1711.818423,Water,C.Shelf,Other_true,Marine,1720.536668,11.49212423
+Nuddsetal(1996)FathomFiveIslandsBirds.csv,204,6.197863273,788.3333333,Water,Inland,Other_true,Inland,0.154855093,1.028721697
+Nuddsetal(1996)GeorgianBayBirds_noAliens.csv,209,6.202083305,1031.25,Water,Inland,Other_true,Inland,0.09,6.467493676
+OConnell et al (2020) Wakatobi.csv,212,27.63865839,1733.53527,Water,C.Shelf,Other_true,Marine,826.9701316,8.923768065
+Power (1972) chanb.csv,1216,16.45715358,264.3898635,Water,C.Shelf,Other_true,Marine,6.749813214,49.36824387
+Si et al (2017) TIL birds.csv,173,16.79409204,1505.61194,Water,Inland,Other_true,Inland,0.044,0.340106944
+Simberloff & Martin (1991) Haida Gwaii.csv,873,6.970892856,2888.371429,Water,C.Shelf,Other_true,Marine,142.5174245,0.887590605
+Simberloff & Martin (1991) Maddabrd_noAliens.csv,117,16.66013262,447,Water,C.Shelf,Other_true,Marine,186.1927805,0.41106372
+simiakis et al (2012) all islands.csv,2326,16.57134085,642.6638887,Water,C.Shelf,Other_true,Marine,1.64,10.50284222
+Sin et al (2022) Riau Lingaa.csv,905,26.6277085,2481.165426,Water,C.Shelf,Other_true,Marine,29.73262862,3.835076308
+Sin et al (2022) West Sumatra.csv,729,25.86070862,3421.382932,Water,C.Shelf,Other_true,Marine,50.89805345,31.28023745
+Zhao et al. (2022) Zhoushan.csv,367,16.49563806,1208.732516,Water,C.Shelf,Other_true,Marine,6.78693246,0.84865161

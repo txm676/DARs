@@ -3,13 +3,11 @@
 ######################################################
 
 ###load consensus phylogeny
-cons_tree <- readRDS("Data\\CONS_TREE.rds")
-  
+cons_tree <- ape::read.tree("./Data/Species_datasets/CONS_TREE.tre")
+
 ##load in and format traits for extant species
-#TRAIT_DATA: 1st element = extant species trait data; 2nd element = extinct sp
-TRAIT_DATA <- readRDS("Data\\TRAIT_DATA.rds")
-all_traits <- TRAIT_DATA[[1]]
-  
+all_traits <- read.csv("./Data/Species_datasets/Traits_all_species_PublVer.csv")
+
 traits <- dplyr::select(all_traits, "Beak.Length.culmen", "Beak.Length.nares", "Beak.Width", 
                         "Beak.Depth", "Tarsus.Length",
                         "Wing.Length", "Secondary1","Tail.Length", "Mass")
@@ -39,7 +37,7 @@ if (!identical(apply(traits[,c("Wing.Length", "Secondary1","Tail.Length")], 2, m
               mean_noKiwi)) stop("Township rebellion")
 
 ####Load in traits of extinct species
-extinct_traits <- TRAIT_DATA[[2]]
+extinct_traits <- read.csv("./Data/Species_datasets/Extinct_species_traits_JW.csv")
 #NB. four species are labelled in datasets as extinct but not in the extinct dataset, as they
 #are in AVONET / BIRDTREE
 # #[1] "Hemignathus_lucidus"      "Paroreomyza_maculata"    
@@ -55,7 +53,7 @@ traits_ex <- dplyr::select(extinct_traits, "Beak.Length.culmen", "Beak.Length.na
                            "Wing.Length", "Kipp.s.Distance", "Tail.Length", "Mass")
 
 #for extinct calculate Secondary as Wing - Kipps
-traits_ex <- mutate(traits_ex, Secondary1 = Wing.Length - Kipp.s.Distance)
+traits_ex <- dplyr::mutate(traits_ex, Secondary1 = Wing.Length - Kipp.s.Distance)
 traits_ex <- dplyr::select(traits_ex, "Beak.Length.culmen", "Beak.Length.nares", "Beak.Width", 
                            "Beak.Depth", "Tarsus.Length",
                            "Wing.Length", "Secondary1", "Tail.Length", "Mass")
@@ -119,14 +117,51 @@ a3 <- ape::as.phylo(a2)#convert into phylo object
 #############################################
 
 if (sp_type == "AllSP"){
-  #AllSP_DATA = 1 = lf; 2=ldf_null; 3=lfA;4=ldf_alien; 5 = lfEH; 6 = ldf_ExHs;
-  #7 = lfEP; 8 = ldf_ExPh; 9 = lfEX; 10 = ldf_Ex
-  AllSP_DATA <- readRDS("Data\\AllSP_DATA.rds")
-  lf <- AllSP_DATA[[1]]#filenames
-  ldf_all <- AllSP_DATA[[2]]#datasets
+  
+  #Habitat island datasets
+  lf_H <- list.files("./Data/Island_datasets/Habitat_island_datasets")
+  ldf_H <- lapply(lf_H, function(x){
+    read.csv(paste0("./Data/Island_datasets/Habitat_island_datasets/", x))
+  })
+  
+  #True island datasets
+  lf_T <- list.files("./Data/Island_datasets/True_island_datasets", 
+                     pattern = ".csv")
+  ldf_T <- lapply(lf_T, function(x){
+    read.csv(paste0("./Data/Island_datasets/True_island_datasets/", x))
+  })
+  
+  #merge datasets
+  lf <- c(lf_H, lf_T)#filenames
+  ldf_all <- c(ldf_H, ldf_T)#datasets
   
   ##check dataset names all correct and in correct order:
-  rainR <- c("Azeria(2004)_noAliens.csv",                                     
+  rainR <- c("battisti et al (2009) Anzio.csv",
+             "battisti et al (2009) cornicolan hills_noAliens.csv",
+             "Berg_1997_birds.csv",
+             "Blake (1991) birds Illinois_noAliens.csv",
+             "CSV-brotons and herrando 2001 ECJ..csv.csv",
+             "CSV-Cieslak & Dombrowski 1993 ECJ..csv.csv",
+             "CSV-dos Anjos and Bocon, 1999 ECJ..csv",
+             "CSV-Fernandez Juiricic 2000 ECJ_noAliens.csv",
+             "CSV-Ford 1987 ECJ_noAliens.csv",
+             "CSV-Gillespie & Walter, 2001 ECJ..csv.csv",
+             "CSV-Langrand (1995) ISAR_justFRAGMENTS.csv",
+             "CSV-McCollin 1993 ECJ_noAliens.csv",
+             "CSV-Simberloff & Martin 1991 ECJ..csv.csv",
+             "CSV-Watson, 2003 ECJ..csv.csv",
+             "Daily et al (2001) birds.csv",
+             "Dami_2012_birds.csv",
+             "dos Anjos (2004) human-fragments.csv",
+             "Edwards_2010_birds.csv",
+             "Martensen_2012_Cau.csv",
+             "Martensen_2012_RG.csv",
+             "Martensen_2012_TAP.csv",
+             "Ulrich_2016_birds.csv",
+             "wang et al (2013) birds (resident and breeding).csv",
+             "Wethered & Lawes 2005 Balgowan ECJ.csv",
+             "Wethered & Lawes 2005 Gilgoa ECJ.csv",
+            "Azeria(2004)_noAliens.csv",                                     
              "Baiser et al (2017) Cape Verde Birds_current_noAliens.csv",     
              "Baiser et al (2017) Cook Islands Birds_current_noAliens.csv",   
              "Baiser et al (2017) Galapagos Birds_current.csv",               
@@ -150,14 +185,20 @@ if (sp_type == "AllSP"){
              "Simberloff & Martin (1991) Maddabrd_noAliens.csv",              
              "simiakis et al (2012) all islands.csv",                         
              "Sin et al (2022) Riau Lingaa.csv",                              
-             "Sin et al (2022) West Sumatra.csv") 
-  if (!all(rainR == lf[26:50])){
+             "Sin et al (2022) West Sumatra.csv",
+             "Zhao et al. (2022) Zhoushan.csv") 
+
+  #adjusts length as last entry is the embargoed dataset
+  if (!all(rainR[1:length(ldf_all)] == lf[1:length(ldf_all)])){
     stop("every time: A")
   }
   
   ##Alien
-  lfA <- AllSP_DATA[[3]]#filenames
-  ldf_alien <- AllSP_DATA[[4]]#alien datasets
+  lfA <- list.files("./Data/Island_datasets/True_island_datasets/Alternative_versions/Alien_versions", 
+                     pattern = ".csv")
+  ldf_alien <- lapply(lfA, function(x){
+    read.csv(paste0("./Data/Island_datasets/True_island_datasets/Alternative_versions/Alien_versions/", x))
+  })
   
   if(!identical(lfA,c("Baiser et al (2017) Cape Verde Birds_current_withAlien.csv",
                       "Baiser et al (2017) Cook Islands Birds_current_withAlien.csv",
@@ -171,16 +212,20 @@ if (sp_type == "AllSP"){
                       "Martin (2022) NZ_current_withAlien.csv"))) stop("Wondergan")
   
   ##Historic
-  lfEH <- AllSP_DATA[[5]]#filenames
-  ldf_ExHs <- AllSP_DATA[[6]]#historic period datasets
+  lfEH <- list.files("./Data/Island_datasets/True_island_datasets/Alternative_versions/Extinct_versions/Historic_datasets")
+  ldf_ExHs <- lapply(lfEH, function(x){
+    read.csv(paste0("./Data/Island_datasets/True_island_datasets/Alternative_versions/Extinct_versions/Historic_datasets/", x))
+  })
   
   ##Prehistoric
-  lfEP <- AllSP_DATA[[7]]#filenames
-  ldf_ExPh <- AllSP_DATA[[8]]#prehistoric period datasets
-  
+  lfEP <- list.files("./Data/Island_datasets/True_island_datasets/Alternative_versions/Extinct_versions/Pre_historic_datasets")
+  ldf_ExPh <- lapply(lfEP, function(x){
+    read.csv(paste0("./Data/Island_datasets/True_island_datasets/Alternative_versions/Extinct_versions/Pre_historic_datasets/", x))
+  })
+
   #join together
-  lfEx <- AllSP_DATA[[9]]#filenames
-  ldf_Ex <- AllSP_DATA[[10]]#historic & prehistoric period datasets
+  lfEx <- c(lfEH, lfEP)#filenames
+  ldf_Ex <- c(ldf_ExHs,ldf_ExPh) #historic & prehistoric period datasets
   
   if(!identical(c(lfEH, lfEP),c("Baiser et al (2017) Cape Verde Birds_historic.csv",
                                 "Baiser et al (2017) Cook Islands Birds_historic.csv",
@@ -204,11 +249,49 @@ if (sp_type == "AllSP"){
 } else if (sp_type == "landBird"){
 
 ##Run for Terrestrial passerine##
-  LANDBIRD_DATA <- readRDS("Data\\LANDBIRD_DATA.rds")
-  lf <- LANDBIRD_DATA[[1]]#filenames
-  ldf_all <- LANDBIRD_DATA[[2]]#datasets
-
-  rainR <- c("Azeria(2004)_noAliens.csv",                                     
+  
+  #Habitat island datasets
+  lf_H <- list.files("./Data/Island_datasets/Land_bird_datasets/Habitat_island_datasets")
+  ldf_H <- lapply(lf_H, function(x){
+    read.csv(paste0("./Data/Island_datasets/Land_bird_datasets/Habitat_island_datasets/", x))
+  })
+  
+  #True island datasets
+  lf_T <- list.files("./Data/Island_datasets/Land_bird_datasets/True_island_datasets", 
+                     pattern = ".csv")
+  ldf_T <- lapply(lf_T, function(x){
+    read.csv(paste0("./Data/Island_datasets/Land_bird_datasets/True_island_datasets/", x))
+  })
+  
+  #merge datasets
+  lf <- c(lf_H, lf_T)#filenames
+  ldf_all <- c(ldf_H, ldf_T)#datasets
+  
+  rainR <- c("battisti et al (2009) Anzio.csv",
+             "battisti et al (2009) cornicolan hills_noAliens.csv",
+             "Berg_1997_birds.csv",
+             "Blake (1991) birds Illinois_noAliens.csv",
+             "CSV-brotons and herrando 2001 ECJ..csv.csv",
+             "CSV-Cieslak & Dombrowski 1993 ECJ..csv.csv",
+             "CSV-dos Anjos and Bocon, 1999 ECJ..csv",
+             "CSV-Fernandez Juiricic 2000 ECJ_noAliens.csv",
+             "CSV-Ford 1987 ECJ_noAliens.csv",
+             "CSV-Gillespie & Walter, 2001 ECJ..csv.csv",
+             "CSV-Langrand (1995) ISAR_justFRAGMENTS.csv",
+             "CSV-McCollin 1993 ECJ_noAliens.csv",
+             "CSV-Simberloff & Martin 1991 ECJ..csv.csv",
+             "CSV-Watson, 2003 ECJ..csv.csv",
+             "Daily et al (2001) birds.csv",
+             "Dami_2012_birds.csv",
+             "dos Anjos (2004) human-fragments.csv",
+             "Edwards_2010_birds.csv",
+             "Martensen_2012_Cau.csv",
+             "Martensen_2012_RG.csv",
+             "Martensen_2012_TAP.csv",
+             "Ulrich_2016_birds.csv",
+             "wang et al (2013) birds (resident and breeding).csv",
+             "Wethered & Lawes 2005 Balgowan ECJ.csv",
+             "Wethered & Lawes 2005 Gilgoa ECJ.csv","Azeria(2004)_noAliens.csv",                                     
              "Baiser et al (2017) Cape Verde Birds_current_noAliens.csv",     
              "Baiser et al (2017) Galapagos Birds_current.csv",               
              "Baiser et al (2017) Hawaii Birds_current_noAliens.csv",         
@@ -230,16 +313,42 @@ if (sp_type == "AllSP"){
              "Simberloff & Martin (1991) Maddabrd_noAliens.csv",              
              "simiakis et al (2012) all islands.csv",                         
              "Sin et al (2022) Riau Lingaa.csv",                              
-             "Sin et al (2022) West Sumatra.csv") 
-  if (!all(rainR == lf[26:48])){
-    stop("every time: B")
+             "Sin et al (2022) West Sumatra.csv",
+             "Zhao et al. (2022) Zhoushan.csv") 
+  
+  #adjusts length as last entry is the embargoed dataset
+  if (!all(rainR[1:length(ldf_all)] == lf[1:length(ldf_all)])){
+    stop("every time: A")
   }
 
 ##Terrestrial passerine alien species
-lfA <- LANDBIRD_DATA[[3]]#filenames
-ldf_alien <- LANDBIRD_DATA[[4]]#alien datasets
+##Alien
+lfA <- list.files("./Data/Island_datasets/Land_bird_datasets/Alien_versions", 
+                  pattern = ".csv")
+ldf_alien <- lapply(lfA, function(x){
+  read.csv(paste0("./Data/Island_datasets/Land_bird_datasets/Alien_versions/", x))
+})
+
+if(!identical(lfA,c("Baiser et al (2017) Cape Verde Birds_current_withAlien.csv",
+                    "Baiser et al (2017) Hawaii Birds_current_withAlien.csv",
+                    "Baiser et al (2017) Lesser Antilles Birds_current_withAlien.csv",
+                    "Baiser et al (2017) Marianas Birds_current_withAlien.csv",
+                    "Borgesetal_azores birds_withAlien.csv",
+                    "Borgesetal_canary birds_withAlien.csv",
+                    "Kubota et al. Birds Ryukus_withAlien.csv",
+                    "Martin (2022) NZ_current_withAlien.csv"))) stop("Wondergan")
 
 ##Terrestrial passerine extinct species
-lfEx <- LANDBIRD_DATA[[5]]#filenames
-ldf_Ex <- LANDBIRD_DATA[[6]]#historic period datasets
+##Historic
+lfEx  <- list.files("./Data/Island_datasets/Land_bird_datasets/Extinct_versions/")
+ldf_Ex <- lapply(lfEx, function(x){
+  read.csv(paste0("./Data/Island_datasets/Land_bird_datasets/Extinct_versions/", x))
+})
+
+if(!identical(lfEx ,c("Baiser et al (2017) Cape Verde Birds_historic.csv",
+                              "Baiser et al (2017) Hawaii Birds_historic.csv",
+                              "Baiser et al (2017) Lesser Antilles Birds_historic.csv",
+                              "Baiser et al (2017) Marianas Birds_historic.csv",
+                              "Borgesetal_canary birds_historic.csv",
+                              "Martin (2022) NZ_historic.csv"))) stop("Eyen")
 }

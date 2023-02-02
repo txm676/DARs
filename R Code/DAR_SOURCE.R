@@ -57,6 +57,11 @@ fit_DARs <- function(dat,
   ar <- as.vector(unlist(ar))
   
   p_pd <- pd(dat4, phy)$PD #uses global tree
+  
+  #round all PD/FD values as found that rounding
+  #errors within ses.pd can result in sites with only 1 species having 
+  #large SES scores (when it should be NaN / 0)
+  p_pd <- round(p_pd, 3)
 
   null_list <- ses.pd(dat4, phy, null.model = null_model, runs = null_n,
                       check = FALSE)

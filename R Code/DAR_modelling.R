@@ -4,26 +4,24 @@
 ######################################################################
 #########################################################################
 
-##The working directory needs to be set to this repo;
-#or the below code will not work
-setwd("C:\\Users\\Tom\\Desktop\\DARs")
-
 ##install packages from Github
-devtools::install_github("txm676/picante")
+devtools::install_github("txm676/picante", ref = "98fdbde")
 
 library(ape)
 library(picante) #NOTE THIS HAS TO BE THE VERSION ON MY GITHUB
 library(dplyr)
 library(sars) #needs to >= version 1.3.5
+library(VGAM)
+library(AICcmodavg)
 library(foreach)
 library(doParallel)
 library(cluster)
 library(ggplot2) #needs to be a recent version
 #note that we noticed on some machines it was necessary to install
-#a recent version of the 'vctrs' package.
+#a recent version of the 'vctrs' package also.
 
-##source my necessary functions
-source("R Code\\DAR_SOURCE.R")
+##source necessary functions
+source("./R Code/DAR_SOURCE.R")
 
 ###Source the datasets, phylogeny and dendrogram
 ##USE BODY-SIZE CORRECTED TRAITS OR NOT (TRUE = use BS corrected traits)
@@ -33,7 +31,7 @@ body_size_CORR <- FALSE
 sp_type <- "AllSP"
 
 #then load in the correct data given the above
-source("R Code\\DAR_DATA_SOURCE.R")
+source("./R Code/DAR_DATA_SOURCE.R")
 
 ####################################################################
 ############RUN MAIN DAR FUNCTION#####################
@@ -75,7 +73,7 @@ rez = foreach(i=seq(from=1, to=length(ldf_all), by=1))  %dopar% {
   Fits
 }
 
-save(rez, file = "rez_all_bscFALSE.R")
+save(rez, file = "rez_all_bscFALSE.Rdata")
 
 ##Run for Alien Species
 rez_alien = foreach(i=seq(from=1, to=length(ldf_alien), by=1))  %dopar% {
@@ -94,7 +92,7 @@ rez_alien = foreach(i=seq(from=1, to=length(ldf_alien), by=1))  %dopar% {
   Fits
 }
 
-save(rez_alien, file = "rez_alien_bscFALSE.R")
+save(rez_alien, file = "rez_alien_bscFALSE.Rdata")
 
 ###Run for Extinct Species#######
 rez_extinct = foreach(i=seq(from=1, to=length(ldf_Ex), by=1))  %dopar% {
@@ -112,7 +110,7 @@ rez_extinct = foreach(i=seq(from=1, to=length(ldf_Ex), by=1))  %dopar% {
   Fits
 }
 
-save(rez_extinct, file = "rez_extinct_bscFALSE.R")
+save(rez_extinct, file = "rez_extinct_bscFALSE.Rdata")
 
 ###################################################################
 ######EXTRACTING RESULTS####################################
@@ -218,7 +216,7 @@ preds <- preds %>%
 preds <- mutate_all(preds, as.numeric)
 
 #load in elev and clim data, and island type info
-ETP <- readRDS("Data\\ETP.rds")
+ETP <- read.csv("./Data/Predictors/world_clim_all_ETP.csv")
 
 if (N2 == "landBird"){
  ETP <- filter(ETP, Dataset %in% rownames(preds)) 
