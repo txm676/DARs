@@ -33,7 +33,8 @@ car_3.0-12
 tidyr_1.2.0  
 colorBlindness_0.1.9  
 reshape2_1.4.4  
-ppcor_1.1   
+ppcor_1.1  
+lemon_0.4.5
 
 
 ## Restrictions and embargos

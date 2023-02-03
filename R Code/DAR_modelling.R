@@ -17,6 +17,7 @@ library(foreach)
 library(doParallel)
 library(cluster)
 library(ggplot2) #needs to be a recent version
+library(lemon)
 #note that we noticed on some machines it was necessary to install
 #a recent version of the 'vctrs' package also.
 
