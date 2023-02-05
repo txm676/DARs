@@ -441,7 +441,10 @@ check_trees_fun <- function(dat4, phy, sp, nmF1, null_n){
   #check P-values correlate
   isc[3] <- cor(nmF1$ES_P, nmF2$ES_P)
   #check PD values have same difference
-  isc[4] <- all(diff(round(nmF1$pd.obs - nmF2$pd.obs, 4)) == 0)
+  dyl <- nmF1$pd.obs - nmF2$pd.obs
+  #needs truncating rather than rounding after changing PD rounding
+  # to 3 dp
+  isc[4] <- all(diff(trunc(dyl*10^1)/10^1) == 0)
   return(isc)
 }
 
