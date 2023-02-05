@@ -49,7 +49,10 @@ source("./R Code/DAR_DATA_SOURCE.R")
 #check_trees runs various checks but is not essential so can be set
 #to FALSE
 
-##Note this takes many hours to run
+#Note here, the arguments have been set to allow the scripts to be run through v
+#quickly but these are NOT the arguments used in the main analyses. To replicate
+#these, set grid_start = "exhaustive", grid_n = 25000, null_n = 999, prune_trees
+#= FALSE. But beware this takes many hours (days) to run!
 
 #set up parallel back-end
 cores = 10 #set depending on the machine / cluster
@@ -65,12 +68,13 @@ rez = foreach(i=seq(from=1, to=length(ldf_all), by=1))  %dopar% {
   library(dplyr)
 
   Fits <- fit_DARs(ldf_all[[i]], phy_dend = a3, phy = cons_tree, n = 0,
-                   grid_start = "exhaustive",
+                   grid_start = "none",
                    grid_n = 25000,
-                   null_model = "taxa.tabels", null_n = 999,
+                   null_model = "taxa.tabels", null_n = 499,
                    power_only = FALSE,
                    linPow = FALSE,
-                   check_trees = FALSE)
+                   check_trees = FALSE,
+                   prune_trees = TRUE)
   Fits
 }
 
@@ -84,12 +88,13 @@ rez_alien = foreach(i=seq(from=1, to=length(ldf_alien), by=1))  %dopar% {
   library(dplyr)
 
   Fits <- fit_DARs(ldf_alien[[i]], phy_dend = a3, phy = cons_tree, n = 0,
-                   grid_start = "exhaustive",
+                   grid_start = "none",
                    grid_n = 25000,
-                   null_model = "taxa.tabels", null_n = 999,
+                   null_model = "taxa.tabels", null_n = 499,
                    power_only = FALSE,
                    linPow = FALSE,
-                   check_trees = FALSE)
+                   check_trees = FALSE,
+                   prune_trees = TRUE)
   Fits
 }
 
@@ -102,12 +107,13 @@ rez_extinct = foreach(i=seq(from=1, to=length(ldf_Ex), by=1))  %dopar% {
   library(picante)
   library(dplyr)
   Fits <- fit_DARs(ldf_Ex[[i]], phy_dend = a3, phy = cons_tree, n = 0,
-                   grid_start = "exhaustive",
+                   grid_start = "none",
                    grid_n = 25000,
-                   null_model = "taxa.tabels", null_n = 999,
+                   null_model = "taxa.tabels", null_n = 499,
                    power_only = FALSE,
                    linPow = FALSE,
-                   check_trees = FALSE)
+                   check_trees = FALSE,
+                   prune_trees = TRUE)
   Fits
 }
 
@@ -218,6 +224,10 @@ preds <- mutate_all(preds, as.numeric)
 
 #load in elev and clim data, and island type info
 ETP <- read.csv("./Data/Predictors/world_clim_all_ETP.csv")
+
+#Remove Zhao et al values as this dataset currently embargoed
+ETP <- ETP[-which(ETP$Dataset == "Zhao et al. (2022) Zhoushan.csv"),]
+
 
 if (N2 == "landBird"){
  ETP <- filter(ETP, Dataset %in% rownames(preds)) 

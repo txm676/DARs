@@ -13,7 +13,8 @@ fit_DARs <- function(dat,
                      confInt = FALSE, ciN = 50, grid_start = "none", 
                      grid_n = NULL,
                      power_only = FALSE, 
-                     linPow = FALSE, check_trees = FALSE){
+                     linPow = FALSE, check_trees = FALSE,
+                     prune_trees = FALSE){
   #phy = phylogeny, phy_dend = dendrogram
   #n is min number of species an island can have
   #null_model is the name of null model from ses.pd function
@@ -27,7 +28,8 @@ fit_DARs <- function(dat,
   #power_only - only fit the simple 2 par models
   #linPow = also fit the linear power model and return z for ISAR, IPDAR and IFDAR
   #check_trees = check global dendrogram PD and (S)ES values against pruned versions
-
+  #prune_trees = prune the phylogeny and dendrogram (TRUE) or use global version
+  
   #remove Extinct column if it exists
   if (any(colnames(dat) == "Extinct")){
     dat <- dat[,-(which(colnames(dat) == "Extinct"))]
@@ -56,7 +58,15 @@ fit_DARs <- function(dat,
   # if(!all(cs == nmF$ntaxa)) stop("Error C")
   ar <- as.vector(unlist(ar))
   
-  p_pd <- pd(dat4, phy)$PD #uses global tree
+  if (prune_trees){
+    #uses pruned tree
+    phy <- keep.tip(phy, sp)#prune the tree to just the species in the dataset
+    p_pd <- pd(dat4, phy)$PD
+  } else if (!prune_trees) {
+    #uses global tree
+    #this is what used in the main analyses
+    p_pd <- pd(dat4, phy)$PD
+  }
   
   #round all PD/FD values as found that rounding
   #errors within ses.pd can result in sites with only 1 species having 
@@ -114,7 +124,8 @@ fit_DARs <- function(dat,
   #calculate FD and add to main dataframe
   FDL <- func_mpd(d = dat4, dend = phy_dend,
                  null.FD = null_model, null_n = null_n,
-                 check_trees = check_trees)
+                 check_trees = check_trees,
+                 prune_trees = prune_trees)
   
   FD <- FDL[[1]]
   
@@ -451,10 +462,15 @@ check_trees_fun <- function(dat4, phy, sp, nmF1, null_n){
 
 ###function to calculate to run FD null models
 func_mpd <- function(d, dend, null.FD, null_n,
-                     check_trees){
+                     check_trees, prune_trees = FALSE){
   
     sp2 <- colnames(d)
-
+    
+    if (prune_trees){
+      #uses pruned tree
+      dend <- keep.tip(dend, sp2)
+    } 
+    
     #run the null models using global dendrogram and taxa TABELS
     null_list_fd <- ses.pd(d, dend, null.model = null.FD, runs = null_n,
                         check = FALSE)

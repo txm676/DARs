@@ -419,8 +419,12 @@ period of 12 months: 10.5281/zenodo.7596594 (<a href="https://zenodo.org/record/
 <p>Within the R Code directory, there are four .R files:</p>
 <ol style="list-style-type: decimal">
 <li><p>DAR_modelling – this is the main script for running the analyses,
-secondary analyses and making the figures. It uses parallel
-processing.</p></li>
+secondary analyses and making the figures. It uses parallel processing.
+Note here, the arguments in the main fit_DARs function have been set to
+allow the scripts to be run through v quickly but these are NOT the
+arguments used in the main analyses. To replicate these, set grid_start
+= “exhaustive”, grid_n = 25000, null_n = 999, prune_trees = FALSE. But
+beware this takes many hours (days) to run!</p></li>
 <li><p>DAR_SOURCE – this holds all of the functions that are used in
 DAR_modelling.</p></li>
 <li><p>DAR_DATA_SOURCE – loads in the consensus phylogeny, the trait

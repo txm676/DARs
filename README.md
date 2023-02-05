@@ -45,7 +45,7 @@ lemon_0.4.5
 ## R code files
 Within the R Code directory, there are four .R files:
 
-1)	DAR_modelling – this is the main script for running the analyses, secondary analyses and making the figures. It uses parallel processing.
+1)	DAR_modelling – this is the main script for running the analyses, secondary analyses and making the figures. It uses parallel processing. Note here, the arguments in the main fit_DARs function have been set to allow the scripts to be run through v quickly but these are NOT the arguments used in the main analyses. To replicate these, set grid_start = "exhaustive", grid_n = 25000, null_n = 999, prune_trees = FALSE. But beware this takes many hours (days) to run!
 
 2)	DAR_SOURCE – this holds all of the functions that are used in DAR_modelling.
 

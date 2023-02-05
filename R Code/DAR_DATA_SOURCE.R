@@ -6,7 +6,7 @@
 cons_tree <- ape::read.tree("./Data/Species_datasets/CONS_TREE.tre")
 
 ##load in and format traits for extant species
-all_traits <- read.csv("./Data/Species_datasets/Traits_all_species_PublVer.csv")
+all_traits <- read.csv("./Data/Species_datasets/Traits_all_species_PublVer.csv", row.names = 1)
 
 traits <- dplyr::select(all_traits, "Beak.Length.culmen", "Beak.Length.nares", "Beak.Width", 
                         "Beak.Depth", "Tarsus.Length",
@@ -37,7 +37,7 @@ if (!identical(apply(traits[,c("Wing.Length", "Secondary1","Tail.Length")], 2, m
               mean_noKiwi)) stop("Township rebellion")
 
 ####Load in traits of extinct species
-extinct_traits <- read.csv("./Data/Species_datasets/Extinct_species_traits_JW.csv")
+extinct_traits <- read.csv("./Data/Species_datasets/Extinct_species_traits_JW.csv", row.names = 2)
 #NB. four species are labelled in datasets as extinct but not in the extinct dataset, as they
 #are in AVONET / BIRDTREE
 # #[1] "Hemignathus_lucidus"      "Paroreomyza_maculata"    
