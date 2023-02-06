@@ -18,6 +18,9 @@ library(doParallel)
 library(cluster)
 library(ggplot2) #needs to be a recent version
 library(lemon)
+library(glmmTMB)
+library(tidyr)
+library(car)
 #note that we noticed on some machines it was necessary to install
 #a recent version of the 'vctrs' package also.
 
@@ -963,11 +966,6 @@ dev.off()
 #################################################################
 ###############REGRESSION ANALYSES######################
 ############################################################
-
-library(glmmTMB)
-library(dplyr)
-library(tidyr)
-library(car)
 
 ##test if z-values / slopes differ between DAR type
 
