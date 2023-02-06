@@ -277,8 +277,14 @@ gPlot <- ggarrange(g1[[1]],  g1[[2]],
                         common.legend = TRUE, legend = "top", 
                         labels = c("A", "B"), ncol=2, nrow=1) 
 
+# jpeg("Figure6_heatmap_AllDataSets_AllSP_bcTRUE.jpeg", 
+#      width = 15, height = 10, 
+#      res = 300, units = "cm")
+# gPlot 
+# dev.off()
 
-ggplot2::ggsave("Figure_Heat_map.pdf", gPlot, width = 6, height = 4.5)
+ggplot2::ggsave("Figure_Heat_map.pdf", gPlot, 
+                width = 6, height = 4.5)
 
 
 
