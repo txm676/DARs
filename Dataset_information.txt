@@ -2,7 +2,7 @@ DATASET INFORMATION
 
 TRUE ISLANDS
 General points
-The filenames given below match those that are stored in the data files within the repository. The numbers at the end of the filenames correspond to the dataset numbers in Table S1 in the Supplementary Information of the paper. The full references for the source papers can be found there also.
+The filenames given below match those that are stored in the data folders within the repository. The numbers at the end of the filenames correspond to the dataset numbers in Table S1 in the Supplementary Information of the paper. The full references for the source papers can be found there also.
 For all datasets, we have removed introduced species, but for some datasets we include alternative versions with them included. Given the large number of introduced species in certain datasets, and the provision of alternative versions with these included, we do not detail the number of introduced species removed from the true island datasets.
 
 Azeria(2004)_noAliens – 26.
@@ -61,7 +61,7 @@ Alternative versions including alien species (Baiser et al (2017) Society Island
 
 Bengtson & Bloch (1983) Birds Breeding - 34
 Birds on islands in the Faroe Islands. 
-The surveys observed 105 species (land birds, freshwater birds and larids) during the census, but they only present data (that we use) of the 41 regularly breeding land and freshwater species. They excluded 64 species include marine species, not regularly breeding species, non-breeding visitors, and rare visitors. We have taken definite breeding + and probably breeding (+) species. Hooded crow taken to be carrion crow.
+The surveys observed 105 species (land birds, freshwater birds and larids) during the census, but they only present data (that we use) of the 41 regularly breeding land and freshwater species. They excluded 64 species including marine species, not regularly breeding species, non-breeding visitors, and rare visitors. We have taken definite breeding + and probably breeding (+) species. Hooded crow taken to be carrion crow.
 We have sourced data from the appendix of the source paper.
 
 Bradstreet & McCracken (1978) noAliens - 35
@@ -93,13 +93,22 @@ Nudds, T.D., Bogart, J.P., Britton, D., Hager, H.A., Middleton, A.L.A., Potter, 
 
 OConnell et al (2020) - Wakatobi - 39
 This dataset summarizes all (breeding) bird species present on nine islands in the Wakatobi archipelago, South-east Sulawesi. The data are entirely derived from information provided in O’Connell et al. (2020). Details regarding data collection methods and determination of breeding and introduced species can be found in this paper. Taxonomy for all species in the dataset has been retrospectively matched to BirdTree.
-Importantly, unlike other datasets which are derived from extensive fieldwork on the islands involved, the Wakatobi islands are poorly-explored. As such, the database is derived exclusively from fieldwork completed by the authors, plus a few historical records published by Hartert (1903). Fieldwork effort differed between islands; as such an appreciation of survey work completed on each island is important when interpreting the database. The number of fieldwork days completed on each island:
+Importantly, unlike other datasets which are derived from extensive fieldwork on the islands involved, the Wakatobi islands are poorly-explored. As such, the database is derived exclusively from fieldwork completed by the authors, plus a few historical records published by Hartert (1903). Fieldwork effort differed between islands; as such an appreciation of survey work completed on each island is important when interpreting the database. Table 1 summarizes the number of fieldwork days completed on each island.
 Table 1 – Number of days fieldwork completed in each of the nine islands in the Wakatobi archipelago dataset. Derived from supplementary information in O’Connell et al. (2020). 
-(Island name = Wangi-wangi; # days fieldwork = 41)Oroho (7)Kapota (3)Hoga (26)Kaledupa (33)Tomia (37)Lintea Selatan (3)Binongko (22)Runduma (10)
+(Island name = Wangi-wangi; # days fieldwork = 41)
+Oroho (7)
+Kapota (3)
+Hoga (26)
+Kaledupa (33)
+Tomia (37)
+Lintea Selatan (3)
+Binongko (22)
+Runduma (10)
+
 The number of days completed in some of the smaller islands is quite low, but species diversity on these small islets is also expected to be low. All introduced species (rock dove, Eastern spotted dove, and barred dove) have been removed. No historic or prehistoric extinct species are known from the islands. Three species in the dataset require special attention:
-- Yellow-crested Cockatoo (Cacatua sulphurea) is a Critically Endangered species highly imperilled by the illegal pet trade. As such, this species has been removed from the published version of the dataset.
-- Wangi-wangi White-eye (Zosterops nov.) is a unique, as-yet-undescribed species that cannot be placed on the Jetz et al (2012) phylogeny. As such, we replace it with another locally-occuring White-eye species (Zosterops consobrinorum) in this database as a proxy, to allow coarse comparative metrics to be applied in its stead. It should be noted, however, that although this rough proxy is appropriate for the analysis in this study, it is not assumed that Z. consobrinorum is a close evolutionary relative, and should not be treated as such.
-- O'Connell et al. recognize both Z. chloris & Z. flavissimus (sister species) in the study area. Z. flavissimus is not recognized by Jetz (2012) so both species lumped together here.
+-	Yellow-crested Cockatoo (Cacatua sulphurea) is a Critically Endangered species highly imperilled by the illegal pet trade. As such, this species has been removed from the published version of the dataset.
+-	Wangi-wangi White-eye (Zosterops nov.) is a unique, as-yet-undescribed species that cannot be placed on the Jetz et al (2012) phylogeny. As such, we replace it with another locally-occuring White-eye species (Zosterops consobrinorum) in this database as a proxy, to allow coarse comparative metrics to be applied in its stead. It should be noted, however, that although this rough proxy is appropriate for the analysis in this study, it is not assumed that Z. consobrinorum is a close evolutionary relative, and should not be treated as such.
+-	O'Connell et al. recognize both Z. chloris & Z. flavissimus (sister species) in the study area. Z. flavissimus is not recognized by Jetz (2012) so both species lumped together here.
 Hartert, E. (1903). On the birds collected on the Tukang-Besi Islands and Buton, south-east of Celebes, by Mr. Heinrich Kuhn. Novitates Zoologicae, 10: 18–38.
 
 Jetz, W., Thomas, G.H., Joy, J.B., Hartmann, K. & Mooers, A.O. (2012). The global diversity of birds in space and time. Nature, 491, 444–448.
@@ -174,8 +183,8 @@ The presence of extant breeding species (including introduced species) on each i
 Lists of historic extinct breeding species (those considered extinct >1500AD) and prehistoric extinct breeding species (those considered extinct <1500AD) were obtained from Sayol et al. (2021) and additional literature searches. Once all species occurring outside of the study area range (e.g. outlying islands) were excluded, the spatial distribution of historical extinctions was determined by the above named sources, while spatial distributions of prehistoric extinctions was determined exclusively from New Zealand Birds Online (2022), which was the only source that provided detailed information on these species. Taxonomy for extinct species largely followed Sayol et al., with some changes to match with Jetz et al. where appropriate.
 Note, as above, the status of birds in New Zealand can be complex, and in some cases a species can have a general status of “Native” but be introduced in certain Islands. Additionally, extant species can be extinct on some islands, and extinct species sometimes experienced staggered extinctions, with the last extinctions being historical but with extinctions on some islands being prehistorical. 
 Area values
-The areas given in Diamond seemed quite coarse, so we collated area values from a range of sources (published papers, NZ Government statistics, Department of Conservation statistics, Google earth area measurer; all sources in separate file in DARs folder).
-It is worth nothing that for a few of the smaller islands, Diamond may have actually been referring to island groups (Aldermen), i.e. groups of small islands. Here, we have only focused on specific islands, taking the largest island in each group (for species lists and area values).
+The areas given in Diamond seemed quite coarse, so we collated area values from a range of sources (published papers, NZ Government statistics, Department of Conservation statistics, Google earth area measurer).
+It is worth nothing that, for a few of the smaller islands, Diamond may have actually been referring to island groups (Aldermen), i.e. groups of small islands. Here, we have only focused on specific islands, taking the largest island in each group (for species lists and area values).
 Alternative versions including alien species (Martin (2022) NZ_current_withAlien), historic extinctions (Martin (2022) NZ_historic) and prehistoric extinctions (Martin (2022) NZ_prehistoric_NOMarine) were compiled. A version of the current bird fauna excluding alien species and also excluding marine species (Martin (2022) NZ_noMarine_Modern) was also compiled.
 
 Literature cited:
@@ -188,12 +197,12 @@ New Zealand Birds Online (2022). New Zealand Birds Online. Accessed 07/05/22 fro
 Robertson, H. & Heather, B. (2015). The Hand Guide to the Birds of New Zealand. Second edition. Penguin: Auckland.
 
 Zhao et al (2022) Zhoushan - 51
-34 islands in Zhoushan archipelago, China. Data have been embargoed for a period of six months as are being used in a separate publication.
+34 islands in Zhoushan archipelago, China. Data have been embargoed for a period of 12 months as are being used in a separate publication.
 Seventy transects were surveyed for birds on 34 study islands, including 39 in forest habitats, 19 on farmland habitats, and 12 in mixed habitats. This study only considered breeding birds (resident and summer species) that mainly use terrestrial habitats on islands, excluding diving birds, ducks, and gulls whose habitats rely on or include water. In addition, nocturnal species (one species in this study: Caprimulgus indicus) were excluded.
 
 HABITAT ISLANDS
 General Points
-The filenames match those that are stored in the data files within the repository. The numbers at the end of the filenames correspond to the dataset numbers in Table S1 in the Supplementary Information of the paper. The full references for the source papers can be found there also.
+The filenames match those that are stored in the data folders within the repository. The numbers at the end of the filenames correspond to the dataset numbers in Table S1 in the Supplementary Information of the paper. The full references for the source papers can be found there also.
 Several datasets taken from the FragSAD database (Chase et al., 2019; further meta-data are available from there).
 Chase, J.M., Liebergesell, M., Sagouis, A., May, F., Blowes, S.A., Berg, Å. et al. (2019) FragSAD: a database of diversity and species abundance distributions from habitat fragments. Ecology, 100, e02861.
 
@@ -251,7 +260,7 @@ Patches are tropical dry forest protected areas in Costa Rica and Nicaragua, sur
 Momotus momota, Aratinga strenua, Sittasomus griseicapillus, and Campylorhynchus rufinucha recently split but splits not in BirdTree; Caracara plancus taken as Caracara_cheriway; Dendrocolaptes certhia taken as Dendrocolaptes_sanctithomae.
 
 CSV-Langrand (1995) ISAR_justFRAGMENTS - 15
-Forest birds in forest fragments in Madagascar. We included the seven smaller fragments but not the larger forest block (control site). Mist netting effort per unit area decreased with increasing fragment area. The author was focusing primarily on forest species and has excluded some non-forest species.
+Forest birds in forest fragments in Madagascar. We included the seven smaller fragments but not the larger forest block (control site). Mist netting effort per unit area decreased with increasing fragment area. The source paper author was focusing primarily on forest species and has excluded some non-forest species.
 Apus_barbatus taken as Apus_balstoni. Riparia paludicola now split but split not in BirdTree.
 
 Martensen et al_2012_Cau - 16
