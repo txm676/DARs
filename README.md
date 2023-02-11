@@ -1,5 +1,3 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7514242.svg)](https://doi.org/10.5281/zenodo.7514242)
-
 # DARs
 
 Code and data for the paper:
@@ -11,7 +9,7 @@ Code authors: Tom Matthews and Francois Rigal (Figure 5 code)
 ## Software used
 
 Analyses run using the University of Birmingham's BLUE BEAR HPC,
-using 51 nodes and 320gb memory.
+using 51 cores and 500gb memory.
 
 R version 4.2.0 (2022-04-22)
 
@@ -40,7 +38,7 @@ lemon_0.4.5
 ## Restrictions and embargos
 1)	In the Wakatobi dataset (O’Connell et al. 2020), we have removed one species from the published dataset to avoid publishing the islands on which it is found: Cacatua sulphurea – a critically endangered cockatoo that is at risk from the caged bird trade. Please contact Tom Martin (a paper co-author; tom_martin_2010@yahoo.co.uk) if this information is required.
 
-2)	The Zhoushan dataset (Zhao et al.) has only recently been developed through an extensive field work campaign. As such, this dataset has been embargoed fto allow for it to be used in a different publication. The dataset has been archived at Zendo with an embargo period of 12 months: 10.5281/zenodo.7596594 (https://zenodo.org/record/7596594)
+2)	The Zhoushan dataset (Zhao et al.) has only recently been developed through an extensive field work campaign. As such, this dataset has been embargoed to allow for it to be used in a different publication. The dataset has been archived at Zenodo with an embargo period of 12 months: 10.5281/zenodo.7596594 (https://zenodo.org/record/7596594)
 
 ## R code files
 Within the R Code directory, there are four .R files:
@@ -67,7 +65,9 @@ Within the True_island_datasets folder, there is an "Alternative_versions" folde
 
 •	The trait data for extant species (BirdTree taxonomy). Stored as a csv with 9,993 rows and 12 columns (the 9 traits in the analyses and family, order and habitat data). Rows are species and columns trait information. Data are from AVONET (https://onlinelibrary.wiley.com/doi/full/10.1111/ele.13898) and users should cite this paper if using these data in any publication (it is probably preferable to source the data direct from AVONET in this case). See AVONET metadata for information on all traits.
 
-•	The trait data for extinct species. A csv with 159 rows and 15 columns. Rows are species and columns trait information. Contains data for the same 9 traits as for the extant species, in addition to the Archipelago the species was found on, the Order, Family and Genus, as well as whether or not the species is Aquatic (TRUE = aquatic). Note that some trait measurements are from museum skins, while others are gaps that have been imputed / estimated.
+•	The trait data for extinct species. A csv with 159 rows and 15 columns. Rows are species and columns trait information. Contains data for the same 9 traits as for the extant species, in addition to the Archipelago the species was found on, the Order, Family and Genus, as well as whether or not the species is Aquatic (TRUE = aquatic). Note that some trait measurements are from museum skins, while others are gaps that have been imputed / estimated. This 159 includes
+a handful of extinct species no longer included in the study datasets, but does not include
+the four extinct species that are included in AVONET (i.e. the previous file).
 
 • CONS_TREE – the consensus phylogeny, with 10,154 tips. Consensus tree built using multiple Jetz et al. (2012) BirdTree trees.
 

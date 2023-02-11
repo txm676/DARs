@@ -53,7 +53,6 @@ Alcedo_atthis,0,0,0,0,1,0,0,0,0
 Todiramphus_chloris,1,1,1,1,1,1,1,1,1
 Falco_moluccensis,1,0,0,0,1,1,0,1,0
 Falco_severus,0,0,0,0,0,1,0,0,0
-Cacatua_sulphurea,0,1,0,0,0,0,1,1,0
 Trichoglossus_ornatus,0,0,0,0,1,0,0,0,0
 Tanygnathus_megalorynchos,1,1,0,1,1,1,0,0,0
 Pitta_elegans,1,0,0,1,1,0,0,0,0
@@ -77,4 +76,4 @@ Lonchura_molucca,1,1,0,1,1,1,1,1,0
 Passer_montanus,1,0,1,0,1,1,0,1,1
 ,,,,,,,,,
 Area (ha),15500,1270,1830,350,6400,5300,820,10000,550
-sp.r,53,40,26,35,61,44,15,42,22
+sp.r,53,39,26,35,61,44,14,41,22

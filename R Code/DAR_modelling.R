@@ -582,7 +582,7 @@ table(preds$Type_fine)
 alien_res <- matrix(ncol = 34, nrow = length(rez_alien))#main results table
 for (i in 1:length(rez_alien)){
   if (N2 == "ResidChecks"){
-    if (length(rez_alien[[i]][[2]]) == 1) next
+    if (length(rez_alien[[i]][[2]]) == 1) stop("LOVEA")
     #replace non-linear z values with linPow versions
     dnb_al <- rez_alien[[i]][[1]]
     alien_res[i, ] <- linPow_replace(dnb_al)
@@ -645,7 +645,7 @@ identical(sub("no.*", "", rownames(resA_sub)),
 extinct_res <- matrix(ncol = 34, nrow = length(rez_extinct))#main results table
 for (i in 1:length(rez_extinct)){
   if (N2 == "ResidChecks"){
-    if (length(rez_extinct[[i]][[2]]) == 1) next
+    if (length(rez_extinct[[i]][[2]]) == 1) stop("LOVEB")
     #replace non-linear z values with linPow versions
     dnb_ex <- rez_extinct[[i]][[1]]
     extinct_res[i, ] <- linPow_replace(dnb_ex)
